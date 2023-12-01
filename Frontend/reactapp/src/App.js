@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {getHeroesAsync} from './Services/heroeService';
+import Button from 'react-bootstrap/Button';
 
 
 
 export default function App() {
-const [data, setData] = useState([]);
+const [data, setData] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -16,15 +17,9 @@ const [data, setData] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
-       <div>
-        {data.map(item => (
-          <p key={item.id}>{item.title}</p>
-        ))}
-       </div>
         <p>
-          Hola mundo
+          GetCreator
         </p>
-       
       </header>
     </div>
   );

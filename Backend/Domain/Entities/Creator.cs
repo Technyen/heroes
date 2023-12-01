@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class Creator
     {
         public int Id { get; set; }
-        public string FullName { get; set; } = null;  
+        public string? FullName { get; set; }
 
     }
 }

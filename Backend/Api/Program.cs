@@ -1,6 +1,6 @@
-
-
 using Application.Services;
+using Infrastructure.Interfaces.MarvelService;
+using Infrastructure.Services;
 
 namespace Api
 {
@@ -24,18 +24,19 @@ namespace Api
                                   });
             });
 
-           
-            // Add services to the container.
-
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IMarvelService, MarvelService>();
+            builder.Services.AddHttpClient<IMarvelService, MarvelService>(client =>
+            {
+                client.BaseAddress = new Uri("http://gateway.marvel.com/v1/public/");
+            });
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddScoped<CreatorService>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

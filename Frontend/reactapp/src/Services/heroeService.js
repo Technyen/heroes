@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseEndpoint = "/WeatherForecast";
+const baseEndpoint = "api/Marvel/getCreators";
 
 export async function getHeroesAsync() {
     try {
